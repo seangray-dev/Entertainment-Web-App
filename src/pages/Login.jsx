@@ -50,7 +50,7 @@ const Login = () => {
           </button>
         </form>
         <p className='text-[15px] text-center'>
-          Don't have an account?
+          Don't have an account?{' '}
           <Link
             href='/signup'
             className='text-red hover:text-white transition-colors'>

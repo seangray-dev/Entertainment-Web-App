@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <div className={outfit.className}>
-        <SignUp />
+        <Login />
         {/* <Nav />
       <Component {...pageProps} />
       <Footer /> */}

@@ -64,7 +64,7 @@ const SignUp = () => {
           </button>
         </form>
         <p className='text-[15px] text-center'>
-          Already have an account?
+          Already have an account?{' '}
           <Link
             href='/login'
             className='text-red hover:text-white transition-colors'>
