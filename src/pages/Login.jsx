@@ -5,9 +5,9 @@ import logo from '../../public/assets/logo.svg';
 
 const Login = () => {
   return (
-    <main className='mx-auto max-w-[327px] grid grid-cols-1 items-center justify-center text-white'>
+    <main className='mx-auto max-w-[327px] md:max-w-[400px] grid grid-cols-1 items-center justify-center text-white'>
       <Image
-        className='mt-12 mb-[60px] mx-auto'
+        className='mt-12 md:mt-[88px] lg:mt-[78.41px] mb-[60px] md:mb-[72.4px] lg:mb-[83px] mx-auto'
         src={logo}
         alt='My Image'
         width={32}
@@ -23,7 +23,7 @@ const Login = () => {
               name='email'
               placeholder='Email address'
               required
-              className='bg-transparent outline-none border-grayishBlue border-b pl-4 pb-[18px] w-full text-[15px] placeholder:text-[15px]'
+              className='bg-transparent outline-none border-grayishBlue border-b pl-4 pb-[18px] w-full text-[15px] placeholder:text-[15px] focus:border-white transition-colors'
             />
             <label className='sr-only' htmlFor='email'>
               Email address
@@ -36,7 +36,7 @@ const Login = () => {
               name='password'
               placeholder='Password'
               required
-              className='bg-transparent outline-none border-grayishBlue border-b pl-4 pb-[18px] w-full text-[15px] placeholder:text-[15px]'
+              className='bg-transparent outline-none border-grayishBlue border-b pl-4 pb-[18px] w-full text-[15px] placeholder:text-[15px] focus:border-white transition-colors'
             />
             <label className='sr-only' htmlFor='password'>
               Password
@@ -50,9 +50,9 @@ const Login = () => {
           </button>
         </form>
         <p className='text-[15px] text-center'>
-          Don't have an account?{' '}
+          Don't have an account?
           <Link
-            href='/'
+            href='/signup'
             className='text-red hover:text-white transition-colors'>
             Sign Up
           </Link>
