@@ -3,10 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/assets/logo.svg';
 
-{
-  /* Login Email address Password Login to your account Don't have an
-account? Sign Up */
-}
 const Login = () => {
   return (
     <main className='mx-auto max-w-[327px] grid grid-cols-1 items-center justify-center text-white'>
