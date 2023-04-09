@@ -1,4 +1,4 @@
-import React from 'react';
+import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/assets/logo.svg';
@@ -25,9 +25,15 @@ const SignUp = () => {
       repeatPassword: '',
     },
     validationSchema,
-    onSubmit: (values) => {
-      // Handle sign-up logic here
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post('/api/signup', values);
+        // Handle successful sign-up: navigate to dashboard
+        console.log(response.data);
+      } catch (error) {
+        console.error(error.response.data);
+        // Handle sign-up errors: show error message
+      }
     },
   });
   return (
