@@ -1,4 +1,3 @@
-// pages/api/signup.js
 import getDbInstance from '../../../lib/db';
 import bcrypt from 'bcrypt';
 

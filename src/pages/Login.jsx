@@ -1,4 +1,5 @@
-import React from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/assets/logo.svg';
@@ -13,15 +14,21 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
+  const [serverError, setServerError] = useState('');
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     validationSchema,
-    onSubmit: (values) => {
-      // Handle login logic here
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post('/api/login', values);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error.response.data);
+        setServerError(error.response.data.message);
+      }
     },
   });
 
@@ -83,9 +90,12 @@ const Login = () => {
           <button
             type='submit'
             className='rounded-md bg-red px-4 py-2 mb-6 text-[15px] hover:bg-white hover:text-black transition-colors'>
-            Login or Sign Up
+            Login to your account
           </button>
         </form>
+        {serverError && (
+          <p className='text-red text-[13px] text-center mb-4'>{serverError}</p>
+        )}
         <div className='flex justify-center gap-2'>
           <p className='text-[15px] text-center'>Don't have an account? </p>
           <Link

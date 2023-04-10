@@ -15,6 +15,7 @@
     "formik": "^2.2.9",
     "next": "13.3.0",
     "next-auth": "^4.21.1",
+    "next-connect": "^0.13.0",
     "pg": "^8.10.0",
     "pg-promise": "^11.4.3",
     "postcss": "8.4.21",
