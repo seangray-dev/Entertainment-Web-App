@@ -9,3 +9,13 @@
 body {
   background: var(--background);
 }
+
+/* Nav Icons */
+
+.fill-red svg path {
+  transition: fill 0.3s ease-in-out;
+}
+
+.fill-red svg:hover path {
+  fill: red;
+}

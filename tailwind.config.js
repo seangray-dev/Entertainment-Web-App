@@ -6,9 +6,6 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    screens: {
-      lg: '1440px',
-    },
     extend: {
       colors: {
         DarkBlue: '#10141E',
