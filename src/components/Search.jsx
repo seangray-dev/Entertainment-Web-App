@@ -3,7 +3,7 @@ import SearchIcon from 'public/assets/icon-search.svg';
 
 const Search = () => {
   return (
-    <form className='flex gap-4 mt-6'>
+    <form className='flex gap-4 mt-6 xl:mt-8'>
       <Image src={SearchIcon} alt={'search'}></Image>
       <input
         className='caret-red bg-transparent w-full outline-none text-white placeholder:text-white placeholder:opacity-50 placeholder:font-light focus:border-b focus:border-grayishBlue'

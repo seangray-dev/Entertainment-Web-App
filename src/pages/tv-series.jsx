@@ -10,7 +10,7 @@ const tvseries = () => {
   const tvSeries = data.filter((items) => items.category === 'TV Series');
 
   return (
-    <section className='mt-10 pb-[61px]'>
+    <section className='mt-10 pb-[61px] xl:ml-8'>
       <h2 className='text-white text-xl md:text-[32px] font-light mb-4 md:mb-6 xl:mb-8'>
         TV Series
       </h2>

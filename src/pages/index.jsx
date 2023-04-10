@@ -4,7 +4,7 @@ import Recommended from '@/components/Recommended';
 
 export default function Home() {
   return (
-    <div>
+    <div className='xl:ml-8'>
       <Search />
       <Trending />
       <Recommended />
