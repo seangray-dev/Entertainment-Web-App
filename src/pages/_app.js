@@ -8,7 +8,9 @@ export default function App({ Component, pageProps }) {
   return (
     <div className={outfit.className}>
       <Nav />
-      <Component {...pageProps} />
+      <main className='px-4'>
+        <Component {...pageProps} />
+      </main>
     </div>
   );
 }

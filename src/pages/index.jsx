@@ -4,10 +4,10 @@ import Recommended from '@/components/Recommended';
 
 export default function Home() {
   return (
-    <main className='px-4'>
+    <div>
       <Search />
       <Trending />
       <Recommended />
-    </main>
+    </div>
   );
 }
