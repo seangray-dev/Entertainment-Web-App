@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -18,6 +19,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
+  const [serverError, setServerError] = useState('');
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -32,7 +35,7 @@ const SignUp = () => {
         console.log(response.data);
       } catch (error) {
         console.error(error.response.data);
-        // Handle sign-up errors: show error message
+        setServerError(error.response.data.message);
       }
     },
   });
@@ -118,6 +121,9 @@ const SignUp = () => {
             Create an account
           </button>
         </form>
+        {serverError && (
+          <p className='text-red text-[13px] text-center mb-4'>{serverError}</p>
+        )}
         <p className='text-[15px] text-center'>
           Already have an account?{' '}
           <Link
