@@ -10,6 +10,14 @@ body {
   background: var(--background);
 }
 
+/* Nav */
+
+@media (min-width: 1280px) {
+  .vhscreen {
+    min-height: calc(100vh - 64px);
+  }
+}
+
 /* Nav Icons */
 
 .fill-red svg path {
@@ -20,8 +28,8 @@ body {
   fill: red;
 }
 
-@media (min-width: 1280px) {
-  .vhscreen {
-    min-height: calc(100vh - 64px);
-  }
+/* Bookmark Icon */
+
+.bookmark-wrapper:hover .bookmark-path {
+  @apply stroke-black;
 }
