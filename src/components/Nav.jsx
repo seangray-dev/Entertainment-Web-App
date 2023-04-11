@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/assets/logo.svg';
 import avatar from '../../public/assets/image-avatar.png';
 
 const Nav = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
   return (
     <div className='xl:ml-8 sticky top-0 left-0 z-10'>
       <nav className='bg-semiDarkBlue flex justify-between items-center p-4 xl:flex-col xl:rounded-[20px] xl:justify-normal xl:p-0 xl:fixed xl:w-[96px] vhscreen xl:mt-8'>
@@ -13,7 +20,8 @@ const Nav = () => {
             src={logo}
             alt='logo'
             width={25}
-            height={20}></Image>
+            height={20}
+          />
         </Link>
         <div className='flex gap-6 items-center xl:flex-col xl:gap-10 xl:flex-grow'>
           <Link className='fill-red w-[16px] h-[16px]' href={'/'}>
@@ -49,13 +57,26 @@ const Nav = () => {
             </svg>
           </Link>
         </div>
-        <Image
-          className='border rounded-full xl:mb-8 xl:w-10 xl:h-10'
-          src={avatar}
-          alt='user image'
-          width={24}
-          height={24}
-        />
+        <div className='relative'>
+          <Image
+            className='cursor-pointer border rounded-full xl:mb-8 
+            xl:w-10 xl:h-10'
+            src={avatar}
+            alt='user image'
+            width={24}
+            height={24}
+            onClick={toggleDropdown}
+          />
+          {showDropdown && (
+            <div class='absolute -top-1 right-10 bg-DarkBlue xl:bg-semiDarkBlue rounded-full xl:-right-20 xl:top-1'>
+              <a
+                href='#'
+                class='block px-4 py-2 text-white text-xs hover:underline hover:text-red'>
+                Logout
+              </a>
+            </div>
+          )}
+        </div>
       </nav>
     </div>
   );
