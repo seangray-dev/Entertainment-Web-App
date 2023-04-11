@@ -19,3 +19,9 @@ body {
 .fill-red svg:hover path {
   fill: red;
 }
+
+@media (min-width: 1280px) {
+  .vhscreen {
+    min-height: calc(100vh - 64px);
+  }
+}

@@ -6,7 +6,7 @@ import avatar from '../../public/assets/image-avatar.png';
 const Nav = () => {
   return (
     <div className='xl:ml-8 sticky top-0 left-0 z-10'>
-      <nav className='bg-semiDarkBlue flex justify-between items-center p-4 xl:flex-col xl:rounded-[20px] xl:justify-normal xl:p-0 xl:fixed xl:w-[96px] xl:min-h-screen'>
+      <nav className='bg-semiDarkBlue flex justify-between items-center p-4 xl:flex-col xl:rounded-[20px] xl:justify-normal xl:p-0 xl:fixed xl:w-[96px] vhscreen xl:mt-8'>
         <Link href={'/'}>
           <Image
             className='xl:mb-[75px] xl:mt-9'
