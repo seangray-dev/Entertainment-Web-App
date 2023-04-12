@@ -33,3 +33,13 @@ body {
 .bookmark-wrapper:hover .bookmark-path {
   @apply stroke-black;
 }
+
+/* Trending Section */
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}

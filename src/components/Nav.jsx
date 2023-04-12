@@ -16,7 +16,7 @@ const Nav = () => {
       <nav className='bg-semiDarkBlue flex justify-between items-center p-4 xl:flex-col xl:rounded-[20px] xl:justify-normal xl:p-0 xl:fixed xl:w-[96px] vhscreen xl:mt-8'>
         <Link href={'/'}>
           <Image
-            className='xl:mb-[75px] xl:mt-9'
+            className='xl:mb-[75px] xl:mt-9 xl:w-[32px] xl:h-[25.6px]'
             src={logo}
             alt='logo'
             width={25}

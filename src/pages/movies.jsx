@@ -1,3 +1,4 @@
+import Search from '@/components/Search';
 import data from '../data/data.json';
 import Image from 'next/image';
 import movieIcon from 'public/assets/icon-nav-movies.svg';
@@ -12,7 +13,8 @@ const Movies = () => {
 
   return (
     <section className='mt-10 pb-[61px] xl:ml-8'>
-      <h2 className='text-white text-xl md:text-[32px] font-light mb-4 md:mb-6 xl:mb-8'>
+      <Search />
+      <h2 className='text-white text-xl md:text-[32px] font-light mt-6 xl:mt-[34px] mb-4 md:mb-6 xl:mb-8'>
         Movies
       </h2>
       <ul className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px] xl:gap-10'>

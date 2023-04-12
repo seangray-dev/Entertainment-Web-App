@@ -6,8 +6,8 @@ const outfit = Outfit({ subsets: ['latin'] });
 
 export default function App({ Component, pageProps }) {
   return (
-    // <div className={outfit.className}>
-    <div className='xl:grid xl:grid-cols-[96px_1fr]'>
+    <div
+      className={`${outfit.className} xl:grid xl:grid-cols-[96px_minmax(1185px,_1fr)]`}>
       <Nav />
       <main className='px-4 xl:pl-6 xl:pr-8'>
         <Component {...pageProps} />
