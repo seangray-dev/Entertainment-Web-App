@@ -30,8 +30,12 @@ body {
 
 /* Bookmark Icon */
 
-.bookmark-wrapper:hover .bookmark-path {
+.bookmark-inactive:hover .bookmark-path {
   @apply stroke-black;
+}
+
+.bookmark-active:hover .bookmark-path {
+  fill: black;
 }
 
 /* Trending Section */

@@ -71,7 +71,7 @@ const Nav = () => {
             <div class='absolute -top-1 right-10 bg-DarkBlue xl:bg-semiDarkBlue rounded-full xl:-right-20 xl:top-1'>
               <a
                 href='#'
-                class='block px-4 py-2 text-white text-xs hover:underline hover:text-red'>
+                className='block px-4 py-2 text-white text-xs hover:underline hover:text-red'>
                 Logout
               </a>
             </div>
