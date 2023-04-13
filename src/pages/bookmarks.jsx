@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { BookmarksContext } from '@/context/BookmarksContext';
 import { SearchContext } from '@/context/SearchContext';
 import FilteredData from '@/components/FilteredData';
-import MovieCardItem from '@/components/MovieCardItem';
+import CardItem from '@/components/CardItem';
 import Search from '@/components/Search';
 
 const Bookmarks = () => {
@@ -28,7 +28,7 @@ const Bookmarks = () => {
             </h2>
             <ul className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px] xl:gap-10'>
               {bookmarkedMovies.map((item, index) => (
-                <MovieCardItem
+                <CardItem
                   key={`${item.id}${index}`}
                   item={item}
                   updatedBookmarks={bookmarks}
@@ -42,7 +42,7 @@ const Bookmarks = () => {
           </h2>
           <ul className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px] xl:gap-10'>
             {bookmarkedTVSeries.map((item, index) => (
-              <MovieCardItem
+              <CardItem
                 key={`${item.id}${index}`}
                 item={item}
                 updatedBookmarks={bookmarks}

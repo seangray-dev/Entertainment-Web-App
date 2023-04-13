@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { BookmarksContext } from '@/context/BookmarksContext';
 import { SearchContext } from '@/context/SearchContext';
 import FilteredData from '@/components/FilteredData';
-import MovieCardItem from '@/components/MovieCardItem';
+import MovieCardItem from '@/components/CardItem';
 import Search from '@/components/Search';
 import data from '../data/data.json';
 

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { SearchContext } from '@/context/SearchContext';
 import { BookmarksContext } from '@/context/BookmarksContext';
-import MovieCardItem from '@/components/MovieCardItem';
+import MovieCardItem from '@/components/CardItem';
 
 const FilteredData = ({ data }) => {
   const { bookmarks, handleBookmark } = useContext(BookmarksContext);

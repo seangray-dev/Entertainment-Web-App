@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { BookmarksContext } from '@/context/BookmarksContext';
 import data from '../data/data.json';
-import MovieCardItem from './MovieCardItem';
+import CardItem from './CardItem';
 
 const Recommended = () => {
   const { bookmarks, handleBookmark } = useContext(BookmarksContext);
@@ -15,7 +15,7 @@ const Recommended = () => {
       </h2>
       <ul className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px] xl:gap-10'>
         {notTrending.map((item, index) => (
-          <MovieCardItem
+          <CardItem
             key={`${item.id}${index}`}
             item={item}
             updatedBookmarks={bookmarks}
