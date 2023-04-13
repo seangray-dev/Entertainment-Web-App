@@ -18,7 +18,7 @@ const Bookmarks = () => {
 
   return (
     <div className='mt-10 pb-[61px] xl:ml-8'>
-      <Search />
+      <Search currentPage='bookmarks' />
       {query && <FilteredData data={filteredData} />}
       {!query && (
         <>

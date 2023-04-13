@@ -15,7 +15,7 @@ const Movies = () => {
 
   return (
     <section className='mt-10 pb-[61px] xl:ml-8'>
-      <Search />
+      <Search currentPage='movies' />
       {query && <FilteredData data={filteredData} />}
       {!query && (
         <>
