@@ -6,6 +6,7 @@
   --background: #10141e;
 }
 
+
 body {
   background: var(--background);
 }
