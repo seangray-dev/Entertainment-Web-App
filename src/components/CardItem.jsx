@@ -16,11 +16,11 @@ const MovieCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
           </div>
         </div>
         <img
-          className='rounded-lg mb-2 md:hidden w-full'
-          src={`/${item.thumbnail.regular.small}`}
+          className='rounded-lg mb-2 w-full'
+          src={item.image}
           alt={item.title}
         />
-        <img
+        {/* <img
           className='hidden rounded-lg mb-2 md:block xl:hidden'
           src={`/${item.thumbnail.regular.medium}`}
           alt={item.title}
@@ -29,7 +29,7 @@ const MovieCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
           className='hidden rounded-lg mb-2 md:hidden xl:block'
           src={`/${item.thumbnail.regular.large}`}
           alt={item.title}
-        />
+        /> */}
       </div>
       <div onClick={() => handleBookmark(item)}>
         {updatedBookmarks.includes(item) ? (
