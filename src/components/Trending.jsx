@@ -1,11 +1,22 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { BookmarksContext } from '@/context/BookmarksContext';
-import data from '../data/data.json';
+// import data from '../data/data.json';
+import fetchTrending, { fetchTrendingAllWeek } from '../../lib/tmdb';
 import TrendingCardItem from './TrendingCardItem';
 
 const Trending = () => {
   const { bookmarks, handleBookmark } = useContext(BookmarksContext);
-  const trending = data.filter((items) => items.isTrending);
+  const [trending, setTrending] = useState([]);
+
+  useEffect(() => {
+    fetchTrendingAllWeek()
+      .then((data) => {
+        setTrending(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <section className='mt-6'>
