@@ -2,7 +2,7 @@ import Image from 'next/image';
 import movieIcon from 'public/assets/icon-nav-movies.svg';
 import tvIcon from 'public/assets/icon-nav-tv-series.svg';
 import play from 'public/assets/icon-play.svg';
-import BookmarkIcon from './BookmarkIcon';
+import BookmarkIcon from './Icons/BookMarkIcon';
 
 const CardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   const isBookmarked = updatedBookmarks.includes(item);
