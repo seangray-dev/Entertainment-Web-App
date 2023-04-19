@@ -34,28 +34,34 @@ const Movies = () => {
   const { query, filteredData } = useContext(SearchContext);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [isLoadingUpcoming, setIsLoadingUpcoming] = useState(true);
+  const [isLoadingTopRated, setIsLoadingTopRated] = useState(true);
   const genreMovies = genres.map((genre) => useFetchGenreMovies(genre.id));
 
   useEffect(() => {
     const getUpcomingMovies = async () => {
+      setIsLoadingUpcoming(true);
       try {
         const upcomingMovies = await fetchUpcomingMovies();
         setUpcomingMovies(upcomingMovies.slice(0, 20));
       } catch (error) {
         console.log(error);
       }
+      // setIsLoadingUpcoming(false);
     };
     getUpcomingMovies();
   }, []);
 
   useEffect(() => {
     const getTopRatedMovies = async () => {
+      setIsLoadingTopRated(true);
       try {
         const topRatedMovies = await fetchTopRatedMovies();
         setTopRatedMovies(topRatedMovies.slice(0, 20));
       } catch (error) {
         console.log(error);
       }
+      // setIsLoadingTopRated(false);
     };
     getTopRatedMovies();
   }, []);
@@ -71,12 +77,14 @@ const Movies = () => {
             items={upcomingMovies}
             bookmarks={bookmarks}
             handleBookmark={handleBookmark}
+            isLoading={isLoadingUpcoming}
           />
           <GenreSection
             title='Top Rated'
             items={topRatedMovies}
             bookmarks={bookmarks}
             handleBookmark={handleBookmark}
+            isLoading={isLoadingTopRated}
           />
           {genreMovies.map((items, index) => (
             <GenreSection
@@ -85,6 +93,7 @@ const Movies = () => {
               items={items}
               bookmarks={bookmarks}
               handleBookmark={handleBookmark}
+              // isLoading={isLoading}
             />
           ))}
         </>
