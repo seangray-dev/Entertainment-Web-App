@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import Image from 'next/image';
 import SearchIcon from 'public/assets/icon-search.svg';
 import { SearchContext } from '@/context/SearchContext';
+import { BookmarksContext } from '@/context/BookmarksContext';
 import { search } from '../../lib/tmdb';
 
 const Search = ({ currentPage }) => {
   const { query, setQuery, setFilteredData } = useContext(SearchContext);
+  const { bookmarks } = useContext(BookmarksContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -15,7 +15,7 @@ const FilteredData = ({ data }) => {
   const queryDisplay = query ? `'${query}'` : '';
 
   return (
-    <div>
+    <div className='pb-10'>
       <h2 className='text-white text-xl md:text-[32px] font-light mt-6 xl:mt-[34px] mb-4 md:mb-6 xl:mb-8'>
         Found {resultCount} results for {queryDisplay}
       </h2>

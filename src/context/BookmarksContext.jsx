@@ -1,12 +1,9 @@
 import { createContext, useState } from 'react';
-import data from '../data/data.json';
 
 export const BookmarksContext = createContext();
 
 export const BookmarksProvider = ({ children }) => {
-  const [bookmarks, setBookmarks] = useState(
-    data.filter((item) => item.isBookmarked)
-  );
+  const [bookmarks, setBookmarks] = useState([]);
 
   const handleBookmark = (item) => {
     const updatedBookmarks = [...bookmarks];
