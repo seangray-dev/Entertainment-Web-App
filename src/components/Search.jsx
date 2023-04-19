@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Image from 'next/image';
 import SearchIcon from 'public/assets/icon-search.svg';
 import { SearchContext } from '@/context/SearchContext';
-import data from '../data/data.json';
+import { search } from '../../lib/tmdb';
 
 const Search = ({ currentPage }) => {
   const { query, setQuery, setFilteredData } = useContext(SearchContext);
@@ -12,7 +12,7 @@ const Search = ({ currentPage }) => {
     setFilteredData(query);
   };
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const value = e.target.value.toLowerCase();
 
     setQuery(value);
@@ -22,21 +22,28 @@ const Search = ({ currentPage }) => {
       return;
     }
 
-    let filteredData = data.filter((item) =>
-      item.title.toLocaleLowerCase().includes(value)
-    );
+    try {
+      const searchData = await search(value);
 
-    if (currentPage === 'movies') {
-      filteredData = filteredData.filter((item) => item.category === 'Movie');
-    } else if (currentPage === 'tv-series') {
-      filteredData = filteredData.filter(
-        (item) => item.category === 'TV Series'
-      );
-    } else if (currentPage === 'bookmarks') {
-      filteredData = filteredData.filter((item) => item.isBookmarked);
+      let filteredData = searchData;
+      if (currentPage === 'movies') {
+        filteredData = searchData.filter((item) => item.category === 'Movie');
+      } else if (currentPage === 'tv-series') {
+        filteredData = searchData.filter(
+          (item) => item.category === 'TV Series'
+        );
+      }
+
+      if (currentPage === 'bookmarks') {
+        filteredData = filteredData.filter((item) =>
+          bookmarks.some((bookmark) => bookmark.id === item.id)
+        );
+      }
+
+      setFilteredData(filteredData);
+    } catch (error) {
+      console.log(error);
     }
-
-    setFilteredData(filteredData);
   };
 
   let placeholderText = 'Search for movies or TV series';

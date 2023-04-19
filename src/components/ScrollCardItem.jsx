@@ -3,7 +3,7 @@ import movieIcon from 'public/assets/icon-nav-movies.svg';
 import tvIcon from 'public/assets/icon-nav-tv-series.svg';
 import play from 'public/assets/icon-play.svg';
 
-const TrendingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
+const ScrollingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   return (
     <li className='inline-block relative snap-start' key={`${item.id}`}>
       <div className='relative w-60 h-[140px] md:w-[470px] md:h-[230px] overflow-hidden rounded-lg bg-transparent'>
@@ -81,4 +81,4 @@ const TrendingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   );
 };
 
-export default TrendingCardItem;
+export default ScrollingCardItem;

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { SearchContext } from '@/context/SearchContext';
 import { BookmarksContext } from '@/context/BookmarksContext';
-import MovieCardItem from '@/components/CardItem';
+import CardItem from '@/components/CardItem';
 
 const FilteredData = ({ data }) => {
   const { bookmarks, handleBookmark } = useContext(BookmarksContext);
@@ -21,7 +21,7 @@ const FilteredData = ({ data }) => {
       </h2>
       <ul className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px] xl:gap-10'>
         {data.map((item, index) => (
-          <MovieCardItem
+          <CardItem
             key={`${item.id}${index}`}
             item={item}
             updatedBookmarks={bookmarks}

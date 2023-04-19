@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { BookmarksContext } from '@/context/BookmarksContext';
-// import data from '../data/data.json';
-import fetchTrending, { fetchTrendingAllWeek } from '../../lib/tmdb';
+import { fetchTrendingAllWeek } from '../../lib/tmdb';
 import TrendingCardItem from './ScrollCardItem';
 
 const Trending = () => {
