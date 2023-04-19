@@ -1,40 +1,95 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { BookmarksContext } from '@/context/BookmarksContext';
 import { SearchContext } from '@/context/SearchContext';
 import FilteredData from '@/components/FilteredData';
-import MovieCardItem from '@/components/CardItem';
+import GenreSection from '@/components/GenreSection';
 import Search from '@/components/Search';
-import data from '../data/data.json';
+import { fetchUpcomingMovies, fetchTopRatedMovies } from '../../lib/tmdb';
+import useFetchGenreMovies from '../hooks/useFetchGenreMovies';
+
+const genres = [
+  { id: 28, name: 'Action' },
+  { id: 12, name: 'Adventure' },
+  { id: 16, name: 'Animation' },
+  { id: 35, name: 'Comedy' },
+  { id: 80, name: 'Crime' },
+  { id: 99, name: 'Documentary' },
+  { id: 18, name: 'Drama' },
+  { id: 10751, name: 'Family' },
+  { id: 14, name: 'Fantasy' },
+  { id: 36, name: 'History' },
+  { id: 27, name: 'Horror' },
+  { id: 10402, name: 'Music' },
+  { id: 9648, name: 'Mystery' },
+  { id: 10749, name: 'Romance' },
+  { id: 878, name: 'Science Fiction' },
+  { id: 10770, name: 'TV Movie' },
+  { id: 53, name: 'Thriller' },
+  { id: 10752, name: 'War' },
+  { id: 37, name: 'Western' },
+];
 
 const Movies = () => {
   const { bookmarks, handleBookmark } = useContext(BookmarksContext);
   const { query, filteredData } = useContext(SearchContext);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const genreMovies = genres.map((genre) => useFetchGenreMovies(genre.id));
 
-  const notTrending = data.filter((items) => !items.isTrending);
-  const movies = notTrending.filter((items) => items.category === 'Movie');
+  useEffect(() => {
+    const getUpcomingMovies = async () => {
+      try {
+        const upcomingMovies = await fetchUpcomingMovies();
+        setUpcomingMovies(upcomingMovies.slice(0, 20));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUpcomingMovies();
+  }, []);
+
+  useEffect(() => {
+    const getTopRatedMovies = async () => {
+      try {
+        const topRatedMovies = await fetchTopRatedMovies();
+        setTopRatedMovies(topRatedMovies.slice(0, 20));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getTopRatedMovies();
+  }, []);
 
   return (
-    <section className='mt-10 pb-[61px] xl:ml-8'>
+    <div className='mt-10 pb-[61px] xl:ml-8'>
       <Search currentPage='movies' />
       {query && <FilteredData data={filteredData} />}
       {!query && (
         <>
-          <h2 className='text-white text-xl md:text-[32px] font-light mt-6 xl:mt-[34px] mb-4 md:mb-6 xl:mb-8'>
-            Movies
-          </h2>
-          <ul className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px] xl:gap-10'>
-            {movies.map((item, index) => (
-              <MovieCardItem
-                key={`${item.id}${index}`}
-                item={item}
-                updatedBookmarks={bookmarks}
-                handleBookmark={handleBookmark}
-              />
-            ))}
-          </ul>
+          <GenreSection
+            title='Upcoming'
+            movies={upcomingMovies}
+            bookmarks={bookmarks}
+            handleBookmark={handleBookmark}
+          />
+          <GenreSection
+            title='Top Rated'
+            movies={topRatedMovies}
+            bookmarks={bookmarks}
+            handleBookmark={handleBookmark}
+          />
+          {genreMovies.map((movies, index) => (
+            <GenreSection
+              key={genres[index].id}
+              title={genres[index].name}
+              movies={movies}
+              bookmarks={bookmarks}
+              handleBookmark={handleBookmark}
+            />
+          ))}
         </>
       )}
-    </section>
+    </div>
   );
 };
 

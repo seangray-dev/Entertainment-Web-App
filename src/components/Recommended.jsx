@@ -12,7 +12,7 @@ const Recommended = () => {
     const getMovies = async () => {
       try {
         const popularMovies = await fetchPopularMovies();
-        setMovies(popularMovies.filter((movie) => movie.vote_average > 7));
+        setMovies(popularMovies.slice(0, 20));
       } catch (error) {
         console.log(error);
       }
@@ -24,7 +24,7 @@ const Recommended = () => {
     const getShows = async () => {
       try {
         const popularShows = await fetchPopularShows();
-        setShows(popularShows.slice(0, 8));
+        setShows(popularShows.slice(0, 20));
       } catch (error) {
         console.log(error);
       }
@@ -35,7 +35,7 @@ const Recommended = () => {
   return (
     <section className='mt-10 pb-[61px]'>
       <h2 className='text-white text-xl md:text-[32px] font-light mb-4 md:mb-6 xl:mb-8'>
-        Recommended Movies For You
+        Popular Movies
       </h2>
       <ul className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px] xl:gap-10 mb-10'>
         {movies.map((item, index) => (
@@ -48,7 +48,7 @@ const Recommended = () => {
         ))}
       </ul>
       <h2 className='text-white text-xl md:text-[32px] font-light mb-4 md:mb-6 xl:mb-8'>
-        Recommended Shows For You
+        Popular Shows
       </h2>
       <ul className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-[30px] xl:gap-10'>
         {shows.map((item, index) => (

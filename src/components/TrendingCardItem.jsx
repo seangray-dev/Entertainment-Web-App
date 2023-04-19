@@ -15,7 +15,7 @@ const TrendingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
             </button>
           </div>
         </div>
-        <img className='brightness-75' src={item.image} />
+        <img className='brightness-50' src={item.image} />
       </div>
       <div onClick={() => handleBookmark(item)}>
         {updatedBookmarks.includes(item) ? (
