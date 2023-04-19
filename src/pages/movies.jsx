@@ -68,21 +68,21 @@ const Movies = () => {
         <>
           <GenreSection
             title='Upcoming'
-            movies={upcomingMovies}
+            items={upcomingMovies}
             bookmarks={bookmarks}
             handleBookmark={handleBookmark}
           />
           <GenreSection
             title='Top Rated'
-            movies={topRatedMovies}
+            items={topRatedMovies}
             bookmarks={bookmarks}
             handleBookmark={handleBookmark}
           />
-          {genreMovies.map((movies, index) => (
+          {genreMovies.map((items, index) => (
             <GenreSection
               key={genres[index].id}
               title={genres[index].name}
-              movies={movies}
+              items={items}
               bookmarks={bookmarks}
               handleBookmark={handleBookmark}
             />

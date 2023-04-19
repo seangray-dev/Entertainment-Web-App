@@ -3,7 +3,7 @@ import movieIcon from 'public/assets/icon-nav-movies.svg';
 import tvIcon from 'public/assets/icon-nav-tv-series.svg';
 import play from 'public/assets/icon-play.svg';
 
-const MovieCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
+const CardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   return (
     <li className='relative' key={`${item.id}`}>
       <div className='relative'>
@@ -20,16 +20,6 @@ const MovieCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
           src={item.image}
           alt={item.title}
         />
-        {/* <img
-          className='hidden rounded-lg mb-2 md:block xl:hidden'
-          src={`/${item.thumbnail.regular.medium}`}
-          alt={item.title}
-        />
-        <img
-          className='hidden rounded-lg mb-2 md:hidden xl:block'
-          src={`/${item.thumbnail.regular.large}`}
-          alt={item.title}
-        /> */}
       </div>
       <div onClick={() => handleBookmark(item)}>
         {updatedBookmarks.includes(item) ? (
@@ -93,4 +83,4 @@ const MovieCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   );
 };
 
-export default MovieCardItem;
+export default CardItem;

@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { BookmarksContext } from '@/context/BookmarksContext';
 // import data from '../data/data.json';
 import fetchTrending, { fetchTrendingAllWeek } from '../../lib/tmdb';
-import TrendingCardItem from './TrendingCardItem';
+import TrendingCardItem from './ScrollCardItem';
 
 const Trending = () => {
   const { bookmarks, handleBookmark } = useContext(BookmarksContext);

@@ -3,7 +3,7 @@ import { BookmarksContext } from '@/context/BookmarksContext';
 import CardItem from './CardItem';
 import { fetchPopularMovies, fetchPopularShows } from '../../lib/tmdb';
 
-const Recommended = () => {
+const PopularSection = () => {
   const { bookmarks, handleBookmark } = useContext(BookmarksContext);
   const [movies, setMovies] = useState([]);
   const [shows, setShows] = useState([]);
@@ -64,4 +64,4 @@ const Recommended = () => {
   );
 };
 
-export default Recommended;
+export default PopularSection;

@@ -3,7 +3,7 @@ import { SearchContext } from '@/context/SearchContext';
 import Search from '@/components/Search';
 import FilteredData from '@/components/FilteredData';
 import Trending from '@/components/Trending';
-import Recommended from '@/components/Recommended';
+import Recommended from '@/components/PopularSection';
 
 export default function Home() {
   const { query, filteredData } = useContext(SearchContext);
