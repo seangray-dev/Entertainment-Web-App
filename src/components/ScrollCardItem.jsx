@@ -2,14 +2,27 @@ import Image from 'next/image';
 import movieIcon from 'public/assets/icon-nav-movies.svg';
 import tvIcon from 'public/assets/icon-nav-tv-series.svg';
 import play from 'public/assets/icon-play.svg';
+import { useRouter } from 'next/router';
 
 const ScrollingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
+  const router = useRouter();
+
+  const handlePlayClick = (category, id) => {
+    if (category === 'Movie') {
+      router.push(`/movie/${id}`);
+    } else if (category === 'TV') {
+      router.push(`tv/${id}`);
+    }
+  };
+
   return (
     <li className='inline-block relative snap-start' key={`${item.id}`}>
       <div className='relative w-60 h-[140px] md:w-[470px] md:h-[230px] overflow-hidden rounded-lg bg-transparent'>
         <div className='opacity-0 hover:opacity-100 absolute w-full h-full transition-opacity z-10'>
           <div className='absolute bg-white/25 rounded-[28.5px] py-2 pl-2 top-1/2 left-1/2 transform -translate-x-[55px] -translate-y-[25px] hover:scale-105 transition-transform'>
-            <button className='text-white flex gap-[19px] items-center pr-6'>
+            <button
+              onClick={() => handlePlayClick(item.category, item.id)}
+              className='text-white flex gap-[19px] items-center pr-6'>
               <Image alt='play' src={play}></Image>
               Play
             </button>
