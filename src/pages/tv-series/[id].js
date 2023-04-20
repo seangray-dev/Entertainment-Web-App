@@ -1,7 +1,7 @@
 import ItemDetail from '@/components/ItemDetail';
 import { fetchItemDetails } from '../../../lib/tmdb';
 
-const MovieDetail = ({ item }) => {
+const TVSeriesDetail = ({ item }) => {
   return (
     <div>
       <ItemDetail item={item} />
@@ -11,8 +11,8 @@ const MovieDetail = ({ item }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const item = await fetchItemDetails(id);
+  const item = await fetchItemDetails(id, 'TV Series');
   return { props: { item } };
 }
 
-export default MovieDetail;
+export default TVSeriesDetail;

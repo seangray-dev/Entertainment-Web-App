@@ -94,9 +94,9 @@ const ItemDetail = ({ item }) => {
             </div>
           </div>
           <div className='flex flex-col gap-4'>
-            <div className='flex flex-col gap-1 text-sm md:text-base'>
+            <div className='flex flex-col gap-1'>
               <p className='font-lg mb-1'>Genres</p>
-              <div className='flex gap-2 flex-wrap'>
+              <div className='flex gap-2 flex-wrap text-sm md:text-base'>
                 {item.genres.map((genre, index) => (
                   <span
                     key={index}
@@ -119,7 +119,7 @@ const ItemDetail = ({ item }) => {
                   return (
                     <span
                       key={index}
-                      className='bg-semiDarkBlue text-grayishBlue tracking-wider  rounded-lg px-2 py-1 text-sm '>
+                      className='bg-semiDarkBlue text-grayishBlue tracking-wider  rounded-lg px-2 py-1 text-sm'>
                       {actor}
                     </span>
                   );

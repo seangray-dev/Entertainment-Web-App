@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import movieIcon from 'public/assets/icon-nav-movies.svg';
 import tvIcon from 'public/assets/icon-nav-tv-series.svg';
@@ -7,12 +8,25 @@ import BookmarkIcon from './Icons/BookMarkIcon';
 const CardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   const isBookmarked = updatedBookmarks.includes(item);
 
+  const router = useRouter();
+
+  const handlePlayClick = (category, id) => {
+    console.log(category, id);
+    if (category === 'Movie') {
+      router.push(`/movies/${id}`);
+    } else if (category === 'TV Series') {
+      router.push(`/tv-series/${id}`);
+    }
+  };
+
   return (
     <li className='relative' key={`${item.id}`}>
       <div className='relative'>
         <div className='opacity-0 hover:opacity-100 absolute w-full h-full transition-opacity z-10'>
           <div className='absolute bg-white/25 rounded-[28.5px] py-2 pl-2 top-1/2 left-1/2 transform -translate-x-[55px] -translate-y-[25px] hover:scale-105 transition-transform'>
-            <button className='text-white flex gap-[19px] items-center pr-6'>
+            <button
+              onClick={() => handlePlayClick(item.category, item.id)}
+              className='text-white flex gap-[19px] items-center pr-6'>
               <Image alt='play' src={play}></Image>
               Play
             </button>

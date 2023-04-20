@@ -8,10 +8,11 @@ const ScrollingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   const router = useRouter();
 
   const handlePlayClick = (category, id) => {
+    console.log(category, id);
     if (category === 'Movie') {
-      router.push(`/movie/${id}`);
-    } else if (category === 'TV') {
-      router.push(`tv/${id}`);
+      router.push(`/movies/${id}`);
+    } else if (category === 'TV Series') {
+      router.push(`tv-series/${id}`);
     }
   };
 
