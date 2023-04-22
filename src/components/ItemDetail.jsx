@@ -26,8 +26,9 @@ const ItemDetail = ({ item }) => {
 
   // Generate star elements
   const generateStars = (rating) => {
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const roundedRating = Math.round(rating * 2) / 2;
+    const fullStars = Math.floor(roundedRating);
+    const halfStar = roundedRating % 1 >= 0.5 ? 1 : 0;
     const emptyStars = 5 - fullStars - halfStar;
 
     return (
