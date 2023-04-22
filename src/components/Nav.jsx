@@ -93,7 +93,7 @@ const Nav = () => {
             onClick={toggleDropdown}
           />
           {showDropdown && (
-            <div class='absolute -top-1 right-10 bg-DarkBlue xl:bg-semiDarkBlue rounded-full xl:-right-20 xl:top-1'>
+            <div className='absolute -top-1 right-10 bg-DarkBlue xl:bg-semiDarkBlue rounded-full xl:-right-20 xl:top-1'>
               <a
                 href='#'
                 className='block px-4 py-2 text-white text-xs hover:underline hover:text-red'>
