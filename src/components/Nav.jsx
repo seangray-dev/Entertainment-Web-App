@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/assets/logo.svg';
 import avatar from '../../public/assets/image-avatar.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
   const router = useRouter();
@@ -84,13 +86,10 @@ const Nav = () => {
           </button>
         </div>
         <div className='relative'>
-          <Image
-            className='cursor-pointer border rounded-full xl:mb-8 
-            xl:w-10 xl:h-10'
-            src={avatar}
-            alt='user image'
-            width={24}
-            height={24}
+          <FontAwesomeIcon
+            icon={faUser}
+            size='lg'
+            className='cursor-pointer xl:mb-8 text-grayishBlue hover:text-red transition-colors'
             onClick={toggleDropdown}
           />
           {showDropdown && (
