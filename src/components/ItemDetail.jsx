@@ -53,7 +53,7 @@ const ItemDetail = ({ item }) => {
       <div className=' text-white flex flex-col justify-center gap-6 pb-10 md:grid md:grid-cols-[1fr,_2fr] md:gap-8 md:max-w-screen-xl md:mx-auto'>
         <div>
           <button
-            className='text-white text-left text-sm underline opacity-50 mb-6'
+            className='text-white text-left text-sm underline opacity-50 mb-6 hover:text-red hover:opacity-100 transition-all'
             onClick={handleGoBack}>
             Go Back
           </button>
