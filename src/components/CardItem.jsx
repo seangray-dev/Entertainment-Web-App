@@ -11,7 +11,6 @@ const CardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   const router = useRouter();
 
   const handlePlayClick = (category, id) => {
-    console.log(category, id);
     if (category === 'Movie') {
       router.push(`/movies/${id}`);
     } else if (category === 'TV Series') {
@@ -34,6 +33,7 @@ const CardItem = ({ item, updatedBookmarks, handleBookmark }) => {
         </div>
         <img
           className='rounded-lg mb-2 w-full brightness-50'
+          // need to remove poster images
           src={item.image}
           alt={item.title}
         />

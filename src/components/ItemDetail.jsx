@@ -79,7 +79,7 @@ const ItemDetail = ({ item }) => {
           <div className='flex gap-12 mx-auto md:mx-0 items-center text-sm md:text-base'>
             <div className='flex flex-col gap-1 items-center'>
               <p className='opacity-50'>Length</p>
-              <p>{item.length} min.</p>
+              <p>{item.length ? item.length + ' min.' : 'N/A'}</p>
             </div>
             <div className='flex flex-col gap-1 items-center'>
               <p className='opacity-50'>Year</p>
