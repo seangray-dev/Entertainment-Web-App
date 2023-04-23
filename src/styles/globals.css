@@ -25,7 +25,7 @@ body {
 }
 
 .fill-red svg:hover path {
-  fill: red;
+  fill: #fc4747;
 }
 
 /* Bookmark Icon */
