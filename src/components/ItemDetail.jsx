@@ -4,7 +4,10 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar as fasFaStar } from '@fortawesome/free-solid-svg-icons';
+import {
+  faStar as fasFaStar,
+  faArrowLeft,
+} from '@fortawesome/free-solid-svg-icons';
 import {
   faStar as farFaStar,
   faStarHalfAlt,
@@ -49,13 +52,13 @@ const ItemDetail = ({ item }) => {
   };
 
   return (
-    <section className='mt-2 xl:ml-8 xl:mt-16'>
+    <section className='mt-4 xl:ml-8 xl:mt-16'>
       <div className=' text-white flex flex-col justify-center gap-6 pb-10 md:grid md:grid-cols-[1fr,_2fr] md:gap-8 md:max-w-screen-xl md:mx-auto'>
         <div>
           <button
-            className='text-white text-left text-sm underline opacity-50 mb-6 hover:text-red hover:opacity-100 transition-all'
+            className='text-white text-left mb-6 hover:text-red hover:opacity-100 transition-all hover:scale-[1.1]'
             onClick={handleGoBack}>
-            Go Back
+            <FontAwesomeIcon className='pr-2' icon={faArrowLeft} size='xl' />
           </button>
           <img
             className='mx-auto rounded-lg md:mx-0 max-w-[240px] md:max-w-full'
