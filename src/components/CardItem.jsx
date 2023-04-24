@@ -1,90 +1,66 @@
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import movieIcon from 'public/assets/icon-nav-movies.svg';
 import tvIcon from 'public/assets/icon-nav-tv-series.svg';
 import play from 'public/assets/icon-play.svg';
+import BookmarkIcon from './Icons/BookMarkIcon';
 
-const MovieCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
+const CardItem = ({ item, updatedBookmarks, handleBookmark }) => {
+  const isBookmarked = updatedBookmarks.includes(item);
+
+  const router = useRouter();
+
+  const handlePlayClick = (category, id) => {
+    if (category === 'Movie') {
+      router.push(`/movies/${id}`);
+    } else if (category === 'TV Series') {
+      router.push(`/tv-series/${id}`);
+    }
+  };
+
   return (
     <li className='relative' key={`${item.id}`}>
       <div className='relative'>
-        <div className='opacity-0 hover:opacity-100 absolute w-full h-full transition-opacity'>
+        <div className='opacity-0 hover:opacity-100 absolute w-full h-full transition-opacity z-10'>
           <div className='absolute bg-white/25 rounded-[28.5px] py-2 pl-2 top-1/2 left-1/2 transform -translate-x-[55px] -translate-y-[25px] hover:scale-105 transition-transform'>
-            <button className='text-white flex gap-[19px] items-center pr-6'>
+            <button
+              onClick={() => handlePlayClick(item.category, item.id)}
+              className='text-white flex gap-[19px] items-center pr-6'>
               <Image alt='play' src={play}></Image>
               Play
             </button>
           </div>
         </div>
         <img
-          className='rounded-lg mb-2 md:hidden w-full'
-          src={`/${item.thumbnail.regular.small}`}
-          alt={item.title}
-        />
-        <img
-          className='hidden rounded-lg mb-2 md:block xl:hidden'
-          src={`/${item.thumbnail.regular.medium}`}
-          alt={item.title}
-        />
-        <img
-          className='hidden rounded-lg mb-2 md:hidden xl:block'
-          src={`/${item.thumbnail.regular.large}`}
+          className='rounded-lg mb-2 w-full brightness-50'
+          // need to remove poster images
+          src={item.image}
           alt={item.title}
         />
       </div>
       <div onClick={() => handleBookmark(item)}>
-        {updatedBookmarks.includes(item) ? (
-          <div className='bookmark-active absolute opacity-50 top-1 md:top-4 right-1 md:right-4  bg-black rounded-full p-2 hover:cursor-pointer hover:opacity-100 hover:bg-white transition-all'>
-            <svg width='12' height='14' xmlns='http://www.w3.org/2000/svg'>
-              <path
-                className='bookmark-path'
-                d='M10.61 0c.14 0 .273.028.4.083a1.03 1.03 0 0 1 .657.953v11.928a1.03 1.03 0 0 1-.656.953c-.116.05-.25.074-.402.074-.291 0-.543-.099-.756-.296L5.833 9.77l-4.02 3.924c-.218.203-.47.305-.756.305a.995.995 0 0 1-.4-.083A1.03 1.03 0 0 1 0 12.964V1.036A1.03 1.03 0 0 1 .656.083.995.995 0 0 1 1.057 0h9.552Z'
-                fill='#FFF'
-              />
-            </svg>
-          </div>
-        ) : (
-          <div className='bookmark-inactive absolute opacity-50 top-1 md:top-4 right-1 md:right-4 rotate-2 bg-black rounded-full p-2 hover:cursor-pointer hover:opacity-100 hover:bg-white transition-all'>
-            <svg width='12' height='14' xmlns='http://www.w3.org/2000/svg'>
-              <path
-                className='bookmark-path'
-                d='m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z'
-                stroke='#FFF'
-                strokeWidth='1.5'
-                fill='none'
-              />
-            </svg>
-          </div>
-        )}
+        <BookmarkIcon isBookmarked={isBookmarked} />
       </div>
       <div className='flex flex-col'>
         <div className='flex gap-2'>
-          <div className='flex items-center'>
+          <div className='flex items-center gap-2'>
             <p className='text-white text-[12px] opacity-75 font-light'>
               {item.year}
             </p>
-            <div className='ml-2 w-[3px] h-[3px] rounded-full bg-white opacity-75'>
-              {' '}
-            </div>
-          </div>
-          <div className='flex items-center gap-[6px]'>
+            <div className='w-[3px] h-[3px] rounded-full bg-white opacity-75'></div>
             <Image
               width={12}
               height={12}
               src={item.category === 'Movie' ? movieIcon : tvIcon}
-              alt={
-                item.category === 'Movie' ? 'movie icon' : 'tv icon'
-              }></Image>
+              alt={item.category === 'Movie' ? 'movie icon' : 'tv icon'}
+            />
             <p className='text-white text-[12px] opacity-75 font-light'>
               {item.category}
             </p>
-            <div className='flex items-center gap-[6px]'>
-              <div className='w-[3px] h-[3px] rounded-full bg-white opacity-75'>
-                {' '}
-              </div>
-              <p className='text-white text-[12px] opacity-75 font-light'>
-                {item.rating}
-              </p>
-            </div>
+            <div className='w-[3px] h-[3px] rounded-full bg-white opacity-75'></div>
+            <p className='text-white text-[12px] opacity-75 font-light'>
+              {item.rating}
+            </p>
           </div>
         </div>
         <p className='text-white md:text-lg'>{item.title}</p>
@@ -93,4 +69,4 @@ const MovieCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
   );
 };
 
-export default MovieCardItem;
+export default CardItem;

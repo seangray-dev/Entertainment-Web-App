@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import { BookmarksContext } from '@/context/BookmarksContext';
-import data from '../data/data.json';
-import TrendingCardItem from './TrendingCardItem';
+import { fetchTrendingAllWeek } from '../../lib/tmdb';
+import TrendingCardItem from './ScrollCardItem';
+import SkeletonLoader from './Skeleton/SkeletonLoader-ScrollCard';
+import useFetchData from '@/hooks/useFetchData';
 
 const Trending = () => {
   const { bookmarks, handleBookmark } = useContext(BookmarksContext);
-  const trending = data.filter((items) => items.isTrending);
+  const { data: trending, isLoading } = useFetchData(fetchTrendingAllWeek);
 
   return (
     <section className='mt-6'>
@@ -14,16 +16,20 @@ const Trending = () => {
       </h2>
       <div className='flex overflow-x-scroll hide-scroll-bar snap-x snap-mandatory'>
         <div className='flex flex-nowrap'>
-          <ul className='flex gap-4 md:gap-10 flex-nowrap'>
-            {trending.map((item, index) => (
-              <TrendingCardItem
-                key={`${item.id}${index}`}
-                item={item}
-                updatedBookmarks={bookmarks}
-                handleBookmark={handleBookmark}
-              />
-            ))}
-          </ul>
+          {isLoading ? (
+            <SkeletonLoader itemCount={4} />
+          ) : (
+            <ul className='flex gap-4 md:gap-10 flex-nowrap'>
+              {trending.map((item, index) => (
+                <TrendingCardItem
+                  key={`${item.id}${index}`}
+                  item={item}
+                  updatedBookmarks={bookmarks}
+                  handleBookmark={handleBookmark}
+                />
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </section>

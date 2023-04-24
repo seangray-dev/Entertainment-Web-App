@@ -2,28 +2,37 @@ import Image from 'next/image';
 import movieIcon from 'public/assets/icon-nav-movies.svg';
 import tvIcon from 'public/assets/icon-nav-tv-series.svg';
 import play from 'public/assets/icon-play.svg';
+import { useRouter } from 'next/router';
 
-const TrendingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
+const ScrollingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
+  const router = useRouter();
+
+  const handlePlayClick = (category, id) => {
+    if (category === 'Movie') {
+      router.push(`/movies/${id}`);
+    } else if (category === 'TV Series') {
+      router.push(`tv-series/${id}`);
+    }
+  };
+
   return (
     <li className='inline-block relative snap-start' key={`${item.id}`}>
-      <div className='relative w-60 h-[140px] md:w-[470px] md:h-[230px] overflow-hidden rounded-lg bg-white'>
-        <div className='opacity-0 hover:opacity-100 absolute w-full h-full transition-opacity'>
+      <div className='relative w-60 h-[140px] md:w-[470px] md:h-[230px] overflow-hidden rounded-lg bg-transparent'>
+        <div className='opacity-0 hover:opacity-100 absolute w-full h-full transition-opacity z-10'>
           <div className='absolute bg-white/25 rounded-[28.5px] py-2 pl-2 top-1/2 left-1/2 transform -translate-x-[55px] -translate-y-[25px] hover:scale-105 transition-transform'>
-            <button className='text-white flex gap-[19px] items-center pr-6'>
+            <button
+              onClick={() => handlePlayClick(item.category, item.id)}
+              className='text-white flex gap-[19px] items-center pr-6'>
               <Image alt='play' src={play}></Image>
               Play
             </button>
           </div>
         </div>
-        <img
-          className='hidden md:block'
-          src={`/${item.thumbnail.trending.large}`}
-        />
-        <img className='md:hidden' src={`/${item.thumbnail.trending.small}`} />
+        <img className='brightness-50' src={item.image} />
       </div>
       <div onClick={() => handleBookmark(item)}>
         {updatedBookmarks.includes(item) ? (
-          <div className='bookmark-active absolute opacity-50 top-1 md:top-4 right-1 md:right-4 bg-black rounded-full p-2 hover:cursor-pointer hover:opacity-100 hover:bg-white transition-all'>
+          <div className='bookmark-active absolute opacity-50 top-1 md:top-4 right-1 md:right-4 bg-black rounded-full p-2 hover:cursor-pointer hover:opacity-100 hover:bg-white transition-all z-20'>
             <svg width='12' height='14' xmlns='http://www.w3.org/2000/svg'>
               <path
                 className='bookmark-path'
@@ -33,7 +42,7 @@ const TrendingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
             </svg>
           </div>
         ) : (
-          <div className='bookmark-inactive absolute opacity-50 top-1 md:top-4 right-1 md:right-4 rotate-2 bg-black rounded-full p-2 hover:cursor-pointer hover:opacity-100 hover:bg-white transition-all'>
+          <div className='bookmark-inactive absolute opacity-50 top-1 md:top-4 right-1 md:right-4 rotate-2 bg-black rounded-full p-2 hover:cursor-pointer hover:opacity-100 hover:bg-white transition-all z-20'>
             <svg width='12' height='14' xmlns='http://www.w3.org/2000/svg'>
               <path
                 className='bookmark-path'
@@ -78,11 +87,11 @@ const TrendingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
               </div>
             </div>
           </div>
-          <p className='text-white md:text-lg'>{item.title}</p>
+          <p className='text-white font-bold md:text-lg'>{item.title}</p>
         </div>
       </div>
     </li>
   );
 };
 
-export default TrendingCardItem;
+export default ScrollingCardItem;
