@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import SearchIcon from 'public/assets/icon-search.svg';
 import { SearchContext } from '@/context/SearchContext';
@@ -8,6 +8,13 @@ import { search } from '../../lib/tmdb';
 const Search = ({ currentPage }) => {
   const { query, setQuery, setFilteredData } = useContext(SearchContext);
   const { bookmarks } = useContext(BookmarksContext);
+
+  // Clear the search query when the component is unmounted
+  useEffect(() => {
+    return () => {
+      setQuery('');
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
