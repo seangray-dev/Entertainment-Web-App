@@ -1,9 +1,5 @@
-import {
-  BookmarksContext,
-  BookmarksProvider,
-} from '@/context/BookmarksContext';
+import { BookmarksProvider } from '@/context/BookmarksContext';
 import SearchContextProvider from '@/context/SearchContext';
-import Search from '@/components/Search';
 import Nav from '@/components/Nav';
 import { Outfit } from 'next/font/google';
 import '@/styles/globals.css';
