@@ -1,16 +1,16 @@
 import { useState, useRef, useCallback } from 'react';
 import { useRouter } from 'next/router';
+import { useSearch } from '@/context/SearchContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/assets/logo.svg';
-import avatar from '../../public/assets/image-avatar.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
   const router = useRouter();
   const [showDropdown, setShowDropdown] = useState(false);
-  const searchInputRef = useRef(null);
+  const { searchInputRef } = useSearch();
 
   const handleSearchIconClick = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
