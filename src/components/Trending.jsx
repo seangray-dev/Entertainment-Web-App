@@ -11,8 +11,9 @@ const Trending = () => {
 
   return (
     <section className='mt-6'>
-      <h2 className='text-white text-xl md:text-[32px] font-light mt-6 xl:mt-[34px] mb-4 md:mb-6 xl:mb-8'>
+      <h2 className='relative text-white text-xl md:text-[32px] font-light mt-6 xl:mt-[34px] mb-4 md:mb-6 xl:mb-8'>
         Trending
+        <span class='animate-ping absolute inline-flex h-2 w-2 rounded-full bg-red opacity-75 md:top-0 md:left-32'></span>
       </h2>
       <div className='flex overflow-x-scroll hide-scroll-bar snap-x snap-mandatory'>
         <div className='flex flex-nowrap'>
@@ -24,7 +25,7 @@ const Trending = () => {
                 <TrendingCardItem
                   key={`${item.id}${index}`}
                   item={item}
-                  updatedBookmarks={bookmarks}
+                  bookmarks={bookmarks}
                   handleBookmark={handleBookmark}
                 />
               ))}

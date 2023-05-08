@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { useSearch } from '@/context/SearchContext';
 import Image from 'next/image';
 import SearchIcon from 'public/assets/icon-search.svg';
 import { SearchContext } from '@/context/SearchContext';
@@ -7,7 +8,15 @@ import { search } from '../../lib/tmdb';
 
 const Search = ({ currentPage }) => {
   const { query, setQuery, setFilteredData } = useContext(SearchContext);
+  const { searchInputRef } = useSearch();
   const { bookmarks } = useContext(BookmarksContext);
+
+  // Clear the search query when the component is unmounted
+  useEffect(() => {
+    return () => {
+      setQuery('');
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +67,9 @@ const Search = ({ currentPage }) => {
   }
 
   return (
-    <form className='flex gap-4 mt-6 xl:mt-16' onSubmit={handleSubmit}>
+    <form
+      className='sticky top-14 md:top-0 flex gap-4 xl:mt-10 z-50 bg-DarkBlue py-6'
+      onSubmit={handleSubmit}>
       <Image width={32} height={32} src={SearchIcon} alt={'search'}></Image>
       <input
         className='caret-red bg-transparent w-full outline-none text-white placeholder:text-white placeholder:opacity-50 placeholder:font-light focus:border-b focus:border-grayishBlue'
@@ -66,6 +77,7 @@ const Search = ({ currentPage }) => {
         type='text'
         value={query}
         onChange={handleChange}
+        ref={searchInputRef}
       />
       <button type='submit'></button>
     </form>

@@ -31,7 +31,7 @@ const Bookmarks = () => {
                 <CardItem
                   key={`${item.id}${index}`}
                   item={item}
-                  updatedBookmarks={bookmarks}
+                  bookmarks={bookmarks}
                   handleBookmark={handleBookmark}
                 />
               ))}
@@ -45,7 +45,7 @@ const Bookmarks = () => {
               <CardItem
                 key={`${item.id}${index}`}
                 item={item}
-                updatedBookmarks={bookmarks}
+                bookmarks={bookmarks}
                 handleBookmark={handleBookmark}
               />
             ))}

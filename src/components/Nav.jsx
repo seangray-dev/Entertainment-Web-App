@@ -1,25 +1,20 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
+import { useSearch } from '@/context/SearchContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/assets/logo.svg';
-import avatar from '../../public/assets/image-avatar.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
   const router = useRouter();
-  const [showDropdown, setShowDropdown] = useState(false);
-  const searchInputRef = useRef(null);
+  const { searchInputRef } = useSearch();
 
   const handleSearchIconClick = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     searchInputRef.current?.focus();
   }, []);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
 
   return (
     <div className='xl:ml-8 sticky top-0 left-0 z-50'>
@@ -90,17 +85,7 @@ const Nav = () => {
             icon={faUser}
             size='lg'
             className='cursor-pointer xl:mb-8 text-grayishBlue hover:text-red transition-colors'
-            onClick={toggleDropdown}
           />
-          {showDropdown && (
-            <div className='absolute -top-1 right-10 bg-DarkBlue xl:bg-semiDarkBlue rounded-full xl:-right-20 xl:top-1'>
-              <a
-                href='#'
-                className='block px-4 py-2 text-white text-xs hover:underline hover:text-red'>
-                Logout
-              </a>
-            </div>
-          )}
         </div>
       </nav>
     </div>
