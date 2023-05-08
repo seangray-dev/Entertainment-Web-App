@@ -67,7 +67,9 @@ const Search = ({ currentPage }) => {
   }
 
   return (
-    <form className='flex gap-4 mt-6 xl:mt-16' onSubmit={handleSubmit}>
+    <form
+      className='sticky top-14 md:top-0 flex gap-4 xl:mt-10 z-50 bg-DarkBlue py-6'
+      onSubmit={handleSubmit}>
       <Image width={32} height={32} src={SearchIcon} alt={'search'}></Image>
       <input
         className='caret-red bg-transparent w-full outline-none text-white placeholder:text-white placeholder:opacity-50 placeholder:font-light focus:border-b focus:border-grayishBlue'
