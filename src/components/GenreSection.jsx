@@ -13,7 +13,7 @@ const MovieSection = ({ title, items, bookmarks, handleBookmark }) => {
               <ScrollCardItem
                 key={`${item.id}${index}`}
                 item={item}
-                updatedBookmarks={bookmarks}
+                bookmarks={bookmarks}
                 handleBookmark={handleBookmark}
               />
             ))}

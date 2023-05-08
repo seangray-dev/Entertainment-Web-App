@@ -4,7 +4,7 @@ import tvIcon from 'public/assets/icon-nav-tv-series.svg';
 import play from 'public/assets/icon-play.svg';
 import { useRouter } from 'next/router';
 
-const ScrollingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
+const ScrollingCardItem = ({ item, bookmarks, handleBookmark }) => {
   const router = useRouter();
 
   const handlePlayClick = (category, id) => {
@@ -31,7 +31,7 @@ const ScrollingCardItem = ({ item, updatedBookmarks, handleBookmark }) => {
         <img className='brightness-50' src={item.image} />
       </div>
       <div onClick={() => handleBookmark(item)}>
-        {updatedBookmarks.includes(item) ? (
+        {bookmarks.some((bookmark) => bookmark.id === item.id) ? (
           <div className='bookmark-active absolute opacity-50 top-1 md:top-4 right-1 md:right-4 bg-black rounded-full p-2 hover:cursor-pointer hover:opacity-100 hover:bg-white transition-all z-20'>
             <svg width='12' height='14' xmlns='http://www.w3.org/2000/svg'>
               <path

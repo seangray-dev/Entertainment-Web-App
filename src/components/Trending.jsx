@@ -24,7 +24,7 @@ const Trending = () => {
                 <TrendingCardItem
                   key={`${item.id}${index}`}
                   item={item}
-                  updatedBookmarks={bookmarks}
+                  bookmarks={bookmarks}
                   handleBookmark={handleBookmark}
                 />
               ))}

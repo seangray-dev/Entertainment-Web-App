@@ -27,7 +27,7 @@ const PopularSection = () => {
             <CardItem
               key={`${item.id}${index}`}
               item={item}
-              updatedBookmarks={bookmarks}
+              bookmarks={bookmarks}
               handleBookmark={handleBookmark}
             />
           ))}

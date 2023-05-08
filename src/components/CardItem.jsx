@@ -5,8 +5,8 @@ import tvIcon from 'public/assets/icon-nav-tv-series.svg';
 import play from 'public/assets/icon-play.svg';
 import BookmarkIcon from './Icons/BookMarkIcon';
 
-const CardItem = ({ item, updatedBookmarks, handleBookmark }) => {
-  const isBookmarked = updatedBookmarks.includes(item);
+const CardItem = ({ item, bookmarks, handleBookmark }) => {
+  const isBookmarked = bookmarks.some((bookmark) => bookmark.id === item.id);
 
   const router = useRouter();
 
